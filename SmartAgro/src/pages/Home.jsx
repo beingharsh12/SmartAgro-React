@@ -1,10 +1,11 @@
 import React from "react";
 import Hero from "../components/Hero";
 import Particles from "../components/Particles";
-
+import Seasons from "./Seasons";
 const Home = () => {
   return (
-    <main className="h-screen w-full relative bg-black flex justify-center items-center  ">
+    <>
+    <div className="h-screen w-full relative bg-black flex justify-center items-center  ">
       <div style={{ width: "100%", height: "600px", position: "relative" }}>
         <Particles
           particleColors={["#ffffff"]}
@@ -21,7 +22,9 @@ const Home = () => {
       <div className="absolute flex flex-col justify-center items-center text-white">
         <Hero />
       </div>
-    </main>
+    </div>
+    <Seasons />
+    </>
   );
 };
 
