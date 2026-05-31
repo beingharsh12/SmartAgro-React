@@ -1,5 +1,7 @@
 .nav{
-    backdrop-filter: blur(5px);
+    /* backdrop-filter: blur(5px); */
+    background-color: black; 
+    color: white;
     position: fixed;
     top: 0;
     left: 0;
@@ -7,7 +9,7 @@
     padding: 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
-ul li:hover{
+nav ul li:hover{
     color: #4ade80;
     transition: color 0.3s ;
 

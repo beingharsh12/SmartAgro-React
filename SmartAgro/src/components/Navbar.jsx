@@ -12,9 +12,9 @@ const Navbar = () => {
          <div className="text-2xl font-bold">SmartAgro</div>
         </Link>
         <ul className="flex space-x-4 text-lg">
-          {/* <li>
+          <li>
             <Link to="/home">Home</Link>
-          </li> */}
+          </li>
           <li>
             <Link to="/cropguide">Crop Guide</Link>
           </li>
