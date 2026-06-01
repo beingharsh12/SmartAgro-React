@@ -1,4 +1,8 @@
 import React from 'react'
+import chickpeasImg from '../assets/chickpeas.jpg'
+import mustardImg from '../assets/mustard.webp'
+import barleyImg from '../assets/barley.webp'
+import wheatImg from '../assets/wheat.jpg'
 
 const rabiCrops = [
   {
@@ -9,7 +13,7 @@ const rabiCrops = [
     harvesting: "Mar-Apr",
     conditions: "Cool climate, moderate rainfall/irrigation",
     states: "Punjab, Haryana, UP, MP",
-    // image: wheatImg,
+    image: wheatImg,
   },
   {
     id: 2,
@@ -19,7 +23,7 @@ const rabiCrops = [
     harvesting: "Mar-Apr",
     conditions: "Less water than wheat, tolerates diverse soils",
     uses: "Food, animal feed, malting",
-    // image: barleyImg,
+    image: barleyImg,
   },
   {
     id: 3,
@@ -29,7 +33,7 @@ const rabiCrops = [
     harvesting: "Feb-Mar",
     conditions: "Cool temperatures, dry weather, needs less irrigation",
     uses: "Edible oil, spices",
-    // image: mustardImg,
+    image: mustardImg,
   },
   {
     id: 4,
@@ -39,24 +43,24 @@ const rabiCrops = [
     harvesting: "Mar-Apr",
     conditions: "Mild cool climate, low rainfall",
     uses: "Rich source of protein",
-    // image: chickpeasImg,
+    image: chickpeasImg,
   },
 ];
 
 const RabiCropsCard = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-10">
+    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-10">
   {rabiCrops.map((crop) => (
     <div
       key={crop.id}
-      className="bg-white rounded-xl shadow-lg overflow-hidden border"
+      className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-103 transition-transform duration-300"
     >
-      {/* <img
+      <img
         src={crop.image}
         alt={crop.name}
         className="w-full h-56 object-cover"
       />
- */}
+
 
       <div className="p-4">
         <h2 className="text-2xl font-bold">
@@ -72,9 +76,9 @@ const RabiCropsCard = () => {
             <strong>Sowing:</strong> {crop.sowing}
           </li>
 
-          {/* <li>
+          <li>
             <strong>Harvesting:</strong> {crop.harvesting}
-          </li> */}
+          </li>
 
           <li>
             <strong>Conditions:</strong> {crop.conditions}
@@ -95,7 +99,7 @@ const RabiCropsCard = () => {
       </div>
     </div>
   ))}
-</div>
+</section>
   )
 }
 

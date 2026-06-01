@@ -64,11 +64,11 @@ const zaidCrops = [
 
 const ZaidCropsCard = () => {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-10">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-10">
             {zaidCrops.map((crop) => (
-                <div
+                <section    
                     key={crop.id}
-                    className="bg-white rounded-xl shadow-lg overflow-hidden border"
+                    className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-103 transition-transform duration-300"
                 >
                     {/* <img
                         src={crop.image}
@@ -104,9 +104,9 @@ const ZaidCropsCard = () => {
                             )}
                         </ul>
                     </div>
-                </div>
+                </section>
             ))}
-        </div>
+        </section>
     )
 }
 

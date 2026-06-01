@@ -4,7 +4,7 @@ import Particles from "../components/Particles";
 import Seasons from "./Seasons";
 const Home = () => {
   return (
-    <>
+    <main>
     <div className="h-screen w-full relative bg-black flex justify-center items-center  ">
       <div style={{ width: "100%", height: "600px", position: "relative" }}>
         <Particles
@@ -24,7 +24,7 @@ const Home = () => {
       </div>
     </div>
     <Seasons />
-    </>
+    </main>
   );
 };
 

@@ -28,12 +28,12 @@ const cardData = [
 const Card = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex justify-center items-center gap-6 flex-wrap py-10">
+    <section className="flex justify-center items-center gap-6 flex-wrap py-10">
       {cardData.map((card, index) => (
         <div
           key={index}
           className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white flex flex-col
-hover:scale-104 transition-transform duration-300 cursor-pointer"
+hover:scale-104 transition-transform duration-300 cursor-pointer w-full sm:w-[300px] md:w-[350px]"
         >
           <img
             src={card.img}
@@ -45,12 +45,12 @@ hover:scale-104 transition-transform duration-300 cursor-pointer"
             <h2 className="text-xl font-bold mb-2">{card.title}</h2>
             <p className="text-gray-600">{card.description}</p>
           </div>
-          <button 
+          <button type="button"
           onClick={() => navigate(card.route)}
           className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-all duration-300 m-4">Learn More</button>
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 

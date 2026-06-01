@@ -11,6 +11,8 @@ import Rabi from './pages/Rabi'
 import Kharif from './pages/Kharif'
 import Zaid from './pages/Zaid'
 import {Routes, Route} from 'react-router-dom'
+import Footer from './components/Footer'
+import MainLayout from './layouts/MainLayout'
 
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
     <>
       <Navbar/>
       <Routes>
+         <Route element={<MainLayout />}></Route>
         <Route path='/' element={<Home/>}/>
         <Route path='/home' element={<Home/>}/>
         <Route path='/cropguide' element={<CropGuide/>}/>
@@ -31,6 +34,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/signup' element={<SignUp/>}/>
       </Routes>
+      <Footer/>
     </>
   ) 
 }
