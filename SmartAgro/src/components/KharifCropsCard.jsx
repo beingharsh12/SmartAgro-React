@@ -71,12 +71,12 @@ const KharifCropsCard = () => {
       key={crop.id}
       className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-103 transition-transform duration-300"
     >
-      {/* <img
+      <img
         src={crop.image}
         alt={crop.name}
         className="w-full h-56 object-cover"
       />
- */}
+
 
       <div className="p-4">
         <h2 className="text-2xl font-bold">
@@ -92,9 +92,9 @@ const KharifCropsCard = () => {
             <strong>Sowing:</strong> {crop.sowing}
           </li>
 
-          {/* <li>
+          <li>
             <strong>Harvesting:</strong> {crop.harvesting}
-          </li> */}
+          </li>
 
           <li>
             <strong>Conditions:</strong> {crop.conditions}
