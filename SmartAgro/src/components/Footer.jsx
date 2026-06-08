@@ -1,60 +1,48 @@
-import React from "react";
-// import {
-//   FaFacebook,
-//   FaInstagram,
-//   FaTwitter,
-//   FaLinkedin,
-// } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-green-900 text-white">
+    <footer className="bg-green-900 text-white" aria-labelledby="footer-heading">
       <div className="max-w-7xl mx-auto px-6 py-12">
+        <h2 id="footer-heading" className="sr-only">
+          SmartAgro footer
+        </h2>
+
         <div className="grid md:grid-cols-4 gap-8">
-
-          {/* Brand */} 
-          <div>
-            <h2 className="text-2xl font-bold text-green-300">
+          <section aria-labelledby="footer-brand-heading">
+            <h3 id="footer-brand-heading" className="text-2xl font-bold text-green-300">
               SmartAgro
-            </h2>
+            </h3>
             <p className="mt-4 text-gray-300">
-              Empowering farmers with crop insights, seasonal guidance,
-              and modern agricultural knowledge.
+              Empowering farmers with crop insights, seasonal guidance, and modern agricultural knowledge.
             </p>
-          </div>
+          </section>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">
+          <nav aria-labelledby="footer-links-heading">
+            <h3 id="footer-links-heading" className="text-lg font-semibold mb-4">
               Quick Links
             </h3>
             <ul className="space-y-2 text-gray-300">
               <li>
-                <a href="/" className="hover:text-green-300">
+                <Link to="/home" className="hover:text-green-300 focus-visible:outline-green-300">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/cropguide" className="hover:text-green-300">
+                <Link to="/cropguide" className="hover:text-green-300 focus-visible:outline-green-300">
                   Crops
-                </a>
+                </Link>
               </li>
-              {/* <li>
-                <a href="/seasons" className="hover:text-green-300">
-                  Crop Seasons
-                </a>
-              </li> */}
               <li>
-                <a href="/purchase" className="hover:text-green-300">
+                <Link to="/purchase" className="hover:text-green-300 focus-visible:outline-green-300">
                   Purchase
-                </a>
+                </Link>
               </li>
             </ul>
-          </div>
+          </nav>
 
-          {/* Services */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">
+          <section aria-labelledby="footer-services-heading">
+            <h3 id="footer-services-heading" className="text-lg font-semibold mb-4">
               Services
             </h3>
             <ul className="space-y-2 text-gray-300">
@@ -63,45 +51,31 @@ const Footer = () => {
               <li>Farming Tips</li>
               <li>Weather Insights</li>
             </ul>
-          </div>
+          </section>
 
-          {/* Contact */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">
+          <address className="not-italic" aria-labelledby="footer-contact-heading">
+            <h3 id="footer-contact-heading" className="text-lg font-semibold mb-4">
               Contact Us
             </h3>
             <p className="text-gray-300">
-              support@smartagro.com
+              <a href="mailto:support@smartagro.com" className="hover:text-green-300 focus-visible:outline-green-300">
+                support@smartagro.com
+              </a>
             </p>
             <p className="text-gray-300 mt-2">
-              +91 94126 32757
+              <a href="tel:+919412632757" className="hover:text-green-300 focus-visible:outline-green-300">
+                +91 94126 32757
+              </a>
             </p>
-{/* 
-            <div className="flex gap-4 mt-5 text-xl">
-              <a href="#" className="hover:text-green-300">
-                <FaFacebook />
-              </a>
-              <a href="#" className="hover:text-green-300">
-                <FaInstagram />
-              </a>
-              <a href="#" className="hover:text-green-300">
-                <FaTwitter />
-              </a>
-              <a href="#" className="hover:text-green-300">
-                <FaLinkedin />
-              </a>
-            </div> */}
-          </div>
-
+          </address>
         </div>
 
-        {/* Bottom Footer */}
-        <div className="border-t border-green-700 mt-10 pt-6 text-center text-gray-300">
-          © {new Date().getFullYear()} SmartAgro. All Rights Reserved.
-        </div>
+        <p className="border-t border-green-700 mt-10 pt-6 text-center text-gray-300">
+          &copy; {new Date().getFullYear()} SmartAgro. All Rights Reserved.
+        </p>
       </div>
     </footer>
   );
 };
 
-export default Footer;  
+export default Footer;

@@ -1,4 +1,3 @@
-import React from 'react'
 import chickpeasImg from '../assets/chickpeas.jpg'
 import mustardImg from '../assets/mustard.webp'
 import barleyImg from '../assets/barley.webp'
@@ -49,21 +48,22 @@ const rabiCrops = [
 
 const RabiCropsCard = () => {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-10">
   {rabiCrops.map((crop) => (
-    <div
+    <article
       key={crop.id}
+      aria-labelledby={`rabi-${crop.id}-heading`}
       className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-103 transition-transform duration-300"
     >
       <img
         src={crop.image}
-        alt={crop.name}
+        alt={`${crop.name} crop`}
         className="w-full h-56 object-cover"
       />
 
 
       <div className="p-4">
-        <h2 className="text-2xl font-bold">
+        <h2 id={`rabi-${crop.id}-heading`} className="text-2xl font-bold">
           {crop.id}. {crop.name}
         </h2>
 
@@ -97,9 +97,9 @@ const RabiCropsCard = () => {
           )}
         </ul>
       </div>
-    </div>
+    </article>
   ))}
-</section>
+</div>
   )
 }
 

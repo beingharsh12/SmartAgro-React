@@ -1,11 +1,10 @@
-import React from 'react'
 import WhatWeOfferCard from './WhatWeOfferCard'
 
 const WhatWeOffer = () => {
   return (
-     <section className="bg-green-100 py-12 px-4">
+     <section className="bg-green-100 py-12 px-4" aria-labelledby="offer-heading">
         <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6 text-green-800">What We Offer</h2>
+            <h2 id="offer-heading" className="text-3xl font-bold mb-6 text-green-800">What We Offer</h2>
         </div>
         <div>
             <WhatWeOfferCard />

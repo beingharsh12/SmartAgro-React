@@ -1,4 +1,3 @@
-import React from 'react'
 import { FaLeaf } from "react-icons/fa";
 import { BsFillCloudSunFill } from "react-icons/bs";
 import { FaStore } from "react-icons/fa";
@@ -37,11 +36,11 @@ const WhatWeOfferCard = () => {
     <div>
         <div className="w-full mx-auto grid md:grid-cols-2 gap-8">
             {offersData.map((item) => (
-                <div key={item.id} className="bg-white p-6 rounded-lg shadow-md w-[200] flex flex-col items-center text-center">
-                    <div className="text-4xl mb-4 text-green-800">{item.icon}</div>
-                    <h3 className="text-2xl font-bold mb-2 text-green-800">{item.title}</h3>
+                <article key={item.id} className="bg-white p-6 rounded-lg shadow-md flex flex-col items-center text-center" aria-labelledby={`${item.id}-heading`}>
+                    <div className="text-4xl mb-4 text-green-800" aria-hidden="true">{item.icon}</div>
+                    <h3 id={`${item.id}-heading`} className="text-2xl font-bold mb-2 text-green-800">{item.title}</h3>
                     <p className="text-gray-600">{item.description}</p>
-                </div>
+                </article>
             ))}
         </div>
     </div>

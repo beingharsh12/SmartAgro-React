@@ -14,3 +14,9 @@ nav ul li:hover{
     transition: color 0.3s ;
 
 }
+
+.nav a,
+.nav button {
+    min-height: 44px;
+    min-width: 44px;
+}

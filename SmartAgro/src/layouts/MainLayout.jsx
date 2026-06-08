@@ -1,6 +1,6 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 const MainLayout = () => {
   return (
@@ -13,13 +13,15 @@ const MainLayout = () => {
         <Navbar />
       </header>
 
-      <main id="main-content" className="min-h-screen w-full bg-green-100 flex flex-col items-center px-4 py-10x">
+      <main
+        id="main-content"
+        tabIndex="-1"
+        className="min-h-screen w-full bg-green-100 flex flex-col items-center"
+      >
         <Outlet />
       </main>
 
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </>
   );
 };

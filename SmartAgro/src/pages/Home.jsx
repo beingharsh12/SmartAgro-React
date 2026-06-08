@@ -1,16 +1,15 @@
-import React from "react";
 import Hero from "../components/Hero";
 import Particles from "../components/Particles";
 import Seasons from "./Seasons";
 import About from "../components/About";
 import OurMission from "../components/OurMission";
 import WhatWeOffer from "../components/WhatWeOffer";
-import { WiNightCloudyHigh } from "react-icons/wi";
 import WhyChooseUs from "../components/WhyChooseUs";
+
 const Home = () => {
   return (
-    <main>
-    <section className="h-screen w-full relative bg-black flex justify-center items-center  ">
+    <>
+    <section className="min-h-screen w-full relative bg-black flex justify-center items-center">
       <div style={{ width: "100%", height: "600px", position: "relative" }}>
         <Particles
           particleColors={["#ffffff"]}
@@ -28,12 +27,12 @@ const Home = () => {
         <Hero />
       </div>
     </section>
-    <Seasons />
+    <Seasons /> 
     <About />
     <OurMission />
     <WhatWeOffer />
     <WhyChooseUs />
-    </main>
+    </>
   );
 };
 

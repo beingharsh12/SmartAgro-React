@@ -1,8 +1,7 @@
-import React from "react";
 import kharif from "../assets/kharif.png";
 import rabi from "../assets/rabi.png";
 import zaid from "../assets/zaid.png";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const cardData = [
   {
@@ -26,31 +25,37 @@ const cardData = [
 ];
 
 const Card = () => {
-  const navigate = useNavigate();
   return (
-    <section className="flex justify-center items-center gap-6 flex-wrap py-10">
-      {cardData.map((card, index) => (
-        <div
-          key={index}
+    <div className="flex justify-center items-stretch gap-6 flex-wrap py-10">
+      {cardData.map((card) => (
+        <article
+          key={card.title}
+          aria-labelledby={`${card.title.toLowerCase()}-season-heading`}
           className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white flex flex-col
-hover:scale-104 transition-transform duration-300 cursor-pointer w-full sm:w-[300px] md:w-[350px]"
+hover:scale-104 transition-transform duration-300 w-full sm:w-[300px] md:w-[350px]"
         >
           <img
             src={card.img}
-            alt={card.title}
+            alt={`${card.title} crop season`}
             className="w-full h-48 object-cover"
           />
 
-          <div className="p-4">
-            <h2 className="text-xl font-bold mb-2">{card.title}</h2>
+          <div className="p-4 flex-1">
+            <h2 id={`${card.title.toLowerCase()}-season-heading`} className="text-xl font-bold mb-2">
+              {card.title}
+            </h2>
             <p className="text-gray-600">{card.description}</p>
           </div>
-          <button type="button"
-          onClick={() => navigate(card.route)}
-          className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-all duration-300 m-4">Learn More</button>
-        </div>
+          <Link
+            to={card.route}
+            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-all duration-300 m-4 text-center focus-visible:outline-green-800"
+            aria-label={`Learn more about ${card.title} season crops`}
+          >
+            Learn More
+          </Link>
+        </article>
       ))}
-    </section>
+    </div>
   );
 };
 

@@ -238,7 +238,13 @@ const Particles = ({
     pixelRatio
   ]);
 
-  return <div ref={containerRef} className={`particles-container ${className}`} />;
+  return (
+    <div
+      ref={containerRef}
+      className={`particles-container ${className ?? ""}`}
+      aria-hidden="true"
+    />
+  );
 };
 
 export default Particles;

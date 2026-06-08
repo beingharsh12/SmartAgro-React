@@ -1,5 +1,3 @@
-import React from 'react'
-
 const kharifCrops = [
   {
     id: 1,
@@ -65,21 +63,24 @@ const kharifCrops = [
 
 const KharifCropsCard = () => {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-10">
   {kharifCrops.map((crop) => (
-    <section
+    <article
       key={crop.id}
+      aria-labelledby={`kharif-${crop.id}-heading`}
       className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-103 transition-transform duration-300"
     >
-      <img
-        src={crop.image}
-        alt={crop.name}
-        className="w-full h-56 object-cover"
-      />
+      {crop.image && (
+        <img
+          src={crop.image}
+          alt={`${crop.name} crop`}
+          className="w-full h-56 object-cover"
+        />
+      )}
 
 
       <div className="p-4">
-        <h2 className="text-2xl font-bold">
+        <h2 id={`kharif-${crop.id}-heading`} className="text-2xl font-bold">
           {crop.id}. {crop.name}
         </h2>
 
@@ -113,9 +114,9 @@ const KharifCropsCard = () => {
           )}
         </ul>
       </div>
-    </section>
+    </article>
   ))}
-</section>
+</div>
   )
 }
 
