@@ -1,93 +1,65 @@
-import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
-import "./Navbar.css";
-
-const navItems = [
-  { label: "Home", to: "/home" },
-  { label: "Crop Guide", to: "/cropguide" },
-  { label: "Purchase", to: "/purchase" },
-  { label: "Agriculturists", to: "/agriculturists" },
-  { label: "Weather", to: "/weather" },
-  { label: "Login", to: "/login" },
-  { label: "Sign Up", to: "/signup" },
-];
-
-const navLinkClass = ({ isActive }) =>
-  `block rounded px-2 py-1 transition-colors hover:text-green-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-300 ${
-    isActive ? "text-green-300 underline underline-offset-4" : ""
-  }`;
+import React from 'react'
+import {Link} from 'react-router-dom'
+import logo from "../assets/logo.png";
+import './Navbar.css'
+import { useState } from 'react';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // useEffect(() => {
-  //   const handleEscape = (event) => {
-  //     if (event.key === "Escape") {
-  //       setMenuOpen(false);
-  //     }
-  //   };
-
-  //   window.addEventListener("keydown", handleEscape);
-  //   return () => window.removeEventListener("keydown", handleEscape);
-  // }, []);
-
   return (
-    <nav aria-label="Main navigation" className="nav text-white p-4 w-full">
+    <nav aria-label="Main Navigation"
+    className="nav text-white p-4 w-full">
       <div className="container mx-auto flex justify-between items-center">
-        <Link
-          to="/home"
-          className="text-2xl font-bold rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-300"
-          aria-label="SmartAgro home"
-          onClick={() => setMenuOpen(false)}
-        >
-          SmartAgro
+        <Link to="/home" className="text-xl font-bold">
+          {/* <img src={logo} alt="SmartAgro Logo" className='h-20 bg-white'/> */}
+         <div className="text-2xl font-bold">SmartAgro</div>
         </Link>
-
-        <ul className="hidden md:flex space-x-4 text-lg">
-          {navItems.map((item) => (
-            <li key={item.to}>
-              <NavLink to={item.to} className={navLinkClass}>
-                {item.label}
-              </NavLink>
-            </li>
-          ))}
+        <ul className="flex space-x-4 text-lg hidden md:flex">
+          <li>
+            <Link to="/home">Home</Link>
+          </li>
+          <li>
+            <Link to="/cropguide">Crop Guide</Link>
+          </li>
+          <li>
+            <Link to="/purchase">Purchase</Link>
+          </li>
+          <li>
+            <Link to="/agriculturists">Agriculturists</Link>
+          </li>
+          <li>
+            <Link to="/weather">Weather</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/signup">Sign-Up</Link>
+          </li>
         </ul>
-
+        {/* Mobile Menu*/}
         {menuOpen && (
-          <ul
-            id="mobile-navigation"
-            className="md:hidden flex flex-col items-stretch gap-2 mt-4 text-lg absolute top-14 right-4 bg-black/95 border border-gray-200 p-4 rounded transition-all duration-300 z-10 w-64"
-          >
-            {navItems.map((item, index) => (
-              <li
-                key={item.to}
-                className={index === navItems.length - 1 ? "" : "border-b border-gray-500 pb-2"}
-              >
-                <NavLink
-                  to={item.to}
-                  className={navLinkClass}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item.label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <button
-          type="button"
-          className="flex md:hidden text-2xl rounded p-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-300"
-          onClick={() => setMenuOpen((isOpen) => !isOpen)}
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-controls="mobile-navigation"
-          aria-expanded={menuOpen}
+        <ul className="md:hidden flex flex-col items-center gap-4 mt-4 text-lg absolute top-12 right-0 backdrop-blur-lg border border-gray-200 p-4 rounded transition-all duration-300 z-10 w-1/2">
+          <li className='border-b border-gray-200 pb-2'><Link to="/home">Home</Link></li>
+          <li className='border-b border-gray-200 pb-2'><Link to="/cropguide">Crop Guide</Link></li>
+          <li className='border-b border-gray-200 pb-2'><Link to="/purchase">Purchase</Link></li>
+          <li className='border-b border-gray-200 pb-2'><Link to="/agriculturists">Agriculturists</Link></li>
+          <li className='border-b border-gray-200 pb-2'><Link to="/weather">Weather</Link></li>
+          <li className='border-b border-gray-200 pb-2'><Link to="/login">Login</Link></li>
+          <li><Link to="/signup">Sign-Up</Link></li>
+        </ul>
+      )}
+        <button type="button" className="flex md:hidden text-2xl focus:outline-none"
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle Menu"
+        aria-expanded={menuOpen}
         >
-          <span aria-hidden="true">{menuOpen ? "x" : "="}</span>
+           ☰
         </button>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
