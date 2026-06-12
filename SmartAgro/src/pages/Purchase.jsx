@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
+
 const productsData = [
   {
     id: 1,
@@ -60,8 +61,7 @@ const Purchase = () => {
 
 
    const filteredProducts = productsData.filter((product) => {
-    const matchesCategory =
-      category === "all" || product.category === category;
+    const matchesCategory = category === "all" || product.category === category;
 
     const matchesSearch = product.name
       .toLowerCase()

@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 const Login = () => {
   return (
     <section className="w-full min-h-screen bg-green-100 flex items-center justify-center px-4 py-30" aria-labelledby="login-heading">
@@ -36,7 +38,7 @@ const Login = () => {
             className="mt-2 w-full rounded border border-gray-400 px-3 py-2 focus-visible:outline-green-700"
           />
         </div>
-
+        <p>Don't have an account? <Link to="/signup" className="text-green-700 hover:underline">Sign up</Link></p>
         <button type="submit" className="mt-6 w-full rounded bg-green-700 px-4 py-3 font-semibold text-white hover:bg-green-800">
           Login
         </button>

@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 const SignUp = () => {
   return (
     <section className="w-full min-h-screen bg-green-100 flex items-center justify-center px-4 py-30" aria-labelledby="signup-heading">
@@ -55,6 +57,7 @@ const SignUp = () => {
             Use at least 8 characters.
           </p>
         </div>
+        <p>Already have an account? <Link to="/login" className="text-green-700 hover:underline">Log in</Link></p>
 
         <button type="submit" className="mt-6 w-full rounded bg-green-700 px-4 py-3 font-semibold text-white hover:bg-green-800">
           Create Account
