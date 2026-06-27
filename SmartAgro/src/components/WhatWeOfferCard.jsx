@@ -7,25 +7,25 @@ const offersData = [
   {
     id: "crop-guide",
     title: "Crop Guide",
-    icon: <FaLeaf />, // Maps well to Lucide 'Leaf' or similar
+    icon: <FaLeaf />,
     description: "Get expert recommendations for growing healthy crops."
   },
   {
     id: "weather-updates",
     title: "Weather Updates",
-    icon: <BsFillCloudSunFill />, // Maps well to Lucide 'CloudSun' or similar
+    icon: <BsFillCloudSunFill />,
     description: "Stay ahead with real-time weather forecasts for your farm."
   },
   {
     id: "purchase",
     title: "Purchase",
-    icon: <FaStore />, // Maps well to Lucide 'Store' or 'ShoppingBag'
+    icon: <FaStore />,
     description: "Buy seeds, fertilizers, and equipment at the best prices."
   },
   {
     id: "agriculturists",
     title: "Agriculturists",
-    icon: <FaUsers />, // Maps well to Lucide 'Users' or 'UserCheck'
+    icon: <FaUsers />,
     description: "Connect with experts for personalized farming advice."
   }
 ];

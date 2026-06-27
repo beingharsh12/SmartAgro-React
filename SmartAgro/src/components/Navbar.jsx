@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+ 
 
   return (
     <nav aria-label="Main Navigation"
@@ -50,7 +51,8 @@ const Navbar = () => {
           <li className='border-b border-gray-200 pb-2'><Link to="/agriculturists">Agriculturists</Link></li>
           <li className='border-b border-gray-200 pb-2'><Link to="/weather">Weather</Link></li>
           <li className='border-b border-gray-200 pb-2'><Link to="/login">Login</Link></li>
-          <li><Link to="/signup">Sign-Up</Link></li>
+          {/* <li><Link to="/signup">Sign-Up</Link></li> */}
+          <li><Link to="/cart">Cart</Link></li>
         </ul>
       )}
         <button type="button" className="flex md:hidden text-2xl focus:outline-none"

@@ -1,6 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
-
+import { useState } from "react";
 
 const productsData = [
   {
@@ -46,59 +44,70 @@ const productsData = [
     img: "https://plantix.net/en/library/assets/custom/crop-images/tomato.jpeg",
   },
 ];
-const categories = [
-  "all",
-  "crops",
-  "seeds",
-  "tools",
-  "fertilizers",
-];
+const categories = ["all", "crops", "seeds", "tools", "fertilizers"];
 
+const CART_STORAGE_KEY = "smartagro-cart";
 
 const Purchase = () => {
   const [category, setCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
 
-
-   const filteredProducts = productsData.filter((product) => {
+  const filteredProducts = productsData.filter((product) => {
     const matchesCategory = category === "all" || product.category === category;
 
     const matchesSearch = product.name
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
+      return matchesCategory && matchesSearch;
 
-    return matchesCategory && matchesSearch;
+       // const filteredProducts = productsData.filter((product)=>{
+  //   const matchesProducts = product.category === category || product === 'all'
+  //   const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+  //   return matchesProducts && matchesSearch;
   });
 
   const handleCart = (product) => {
+    const savedCart = JSON.parse(
+      localStorage.getItem(CART_STORAGE_KEY) || "[]");
+    const existingItem = savedCart.find((item) => item.id === product.id);
+
+    const updatedCart = existingItem ? savedCart.map((item) => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item,) 
+      : [...savedCart, { ...product, quantity: 1 }];
+
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(updatedCart));
     alert(`Added ${product.name} to cart!`);
-  }
-  
-
-
+  };
 
   return (
-    <section className="w-full min-h-screen bg-green-100 px-4 py-30" aria-labelledby="purchase-heading">
-        <div className="text-center">
-          {/* <p className="font-semibold uppercase tracking-wide text-green-700">SmartAgro Marketplace</p> */}
-          <h1 id="purchase-heading" className="mt-3 text-4xl font-bold text-green-800">
-            Purchase Farm Essentials
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-700">
-            Find reliable seeds, fertilizers, crop protection products, and tools for your seasonal farming needs.
-          </p>
-        </div>
+    <section
+      className="w-full min-h-screen bg-green-100 px-4 py-30"
+      aria-labelledby="purchase-heading"
+    >
+      <div className="text-center">
+        <p className="font-semibold uppercase tracking-wide text-green-700">SmartAgro Marketplace</p>
+        <h1
+          id="purchase-heading"
+          className="mt-3 text-4xl font-bold text-green-800"
+        >
+          Purchase Farm Essentials
+        </h1>
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-gray-700">
+          Find reliable seeds, fertilizers, crop protection products, and tools
+          for your seasonal farming needs.
+        </p>
+      </div>
 
-    <div className="mt-10 flex justify-center">
-        <input type="text" 
-        aria-label="Search products"
-        placeholder="Search products..." 
-        className="w-full max-w-md px-4 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" 
-        onChange={(e) => setSearchTerm(e.target.value)}
+      <div className="mt-10 flex justify-center">
+        <input
+          type="text"
+          aria-label="Search products"
+          placeholder="Search products..."
+          className="w-full max-w-md px-4 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
 
-     <section className="flex flex-wrap justify-center gap-3 my-8 px-4">
+      <section className="flex flex-wrap justify-center gap-3 my-8 px-4">
         {categories.map((cat) => (
           <button
             key={cat}
@@ -116,28 +125,34 @@ const Purchase = () => {
           </button>
         ))}
       </section>
-      
 
-
-        <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredProducts.map((product) => (
-            <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src={product.img} alt={product.name} className="w-full h-48 object-cover" />
-              <div className="p-4">
-                <h2 className="text-xl font-semibold text-green-800">{product.name}</h2>
-                <p className="mt-2 text-green-600">{product.price}</p>
-                <button 
+      <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {filteredProducts.map((product) => (
+          <div
+            key={product.id}
+            className="bg-white rounded-lg shadow-md overflow-hidden"
+          >
+            <img
+              src={product.img}
+              alt={product.name}
+              className="w-full h-48 object-cover"
+            />
+            <div className="p-4">
+              <h2 className="text-xl font-semibold text-green-800">
+                {product.name}
+              </h2>
+              <p className="mt-2 text-green-600">{product.price}</p>
+              <button
                 aria-label={`Add ${product.name} to cart`}
                 onClick={() => handleCart(product)}
-                className="mt-4 w-full bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800 transition duration-200">
-                  Add to Cart
-                </button>
-                
-              </div>
+                className="mt-4 w-full bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800 transition duration-200"
+              >
+                Add to Cart
+              </button>
             </div>
-          ))}
-        </div>
-        
+          </div>
+        ))}
+      </div>
     </section>
   );
 };

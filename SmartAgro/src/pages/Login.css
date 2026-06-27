@@ -1,0 +1,4 @@
+.loginForm{
+     backdrop-filter: blur(3px);
+     border:.2px solid white;
+}
