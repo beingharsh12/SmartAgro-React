@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Particles from '../components/Particles';
-import './login.css'
+import './Login.css'
 const SignUp = () => {
   return (
     <>
