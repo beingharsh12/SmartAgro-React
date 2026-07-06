@@ -57,7 +57,12 @@ const getHeatAdvice = (maxTemp) => {
   return "Heat stress risk is low for most common field operations.";
 };
 
+
+//comopnenttt started from here...
+
 const Weather = () => {
+
+  //React state management with useState to manage user input, weather API response, loading state and error handling.
   const [searchTerm, setSearchTerm] = useState(DEFAULT_LOCATION.name);
   const [location, setLocation] = useState(DEFAULT_LOCATION);
   const [weatherData, setWeatherData] = useState(null);
@@ -69,6 +74,9 @@ const Weather = () => {
     setError("");
 
     try {
+
+      //Geneating the URL like this: 
+      // https://api.open-meteo.com/v1/forecast?latitude=28.6139&longitude=77.209&current=temperature_2m,relative_humidity_2m,precipitation,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max,et0_fao_evapotranspiration&timezone=auto&forecast_days=5
       const params = new URLSearchParams({
         latitude: selectedLocation.latitude,
         longitude: selectedLocation.longitude,
@@ -78,6 +86,9 @@ const Weather = () => {
         forecast_days: "5",
       });
 
+
+      //fetch that url and get the response and check if the response is ok or not. If not ok then throw an error.
+
       const response = await fetch(`https://api.open-meteo.com/v1/forecast?${params}`);
 
       if (!response.ok) {
@@ -85,6 +96,7 @@ const Weather = () => {
       }
 
       const data = await response.json();
+      console.log(data)
       setWeatherData(data);
     } catch (fetchError) {
       setError(fetchError.message);
@@ -93,12 +105,8 @@ const Weather = () => {
     }
   };
 
-  //The location state is updated when the user searches for a new location, 
-  // which triggers the useEffect to fetch weather data for that location. 
-  // The searchLocation function handles the search form submission, 
-  // performs geocoding to get the latitude and longitude of the searched location, 
-  // and updates the location state accordingly.
 
+  // First API call to fetch weather data for the default location when the component mounts.
   useEffect(() => {
     fetchWeather(location); 
   }, [location]);
@@ -112,6 +120,8 @@ const Weather = () => {
     setError("");
 
     try {
+
+      //Geocoding API call to search for the location based on user input. It fetches the latitude and longitude of the searched city or district.
       const response = await fetch(
         `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(searchTerm)}&count=1&language=en&format=json`
       );
@@ -127,6 +137,9 @@ const Weather = () => {
       }
 
       const result = data.results[0];
+      // console.log(result)
+
+      // set the location state with the new location data and fetch the weather for that location.
       setLocation({
         name: result.name,
         country: result.country,
