@@ -7,7 +7,7 @@ const DEFAULT_LOCATION = {
   longitude: 77.209,
 };
 
-const weatherCodes = {
+const weatherCodes = {  //this Object is Like a translator for weather codes to human-readable descriptions
   0: "Clear sky",
   1: "Mainly clear",
   2: "Partly cloudy",
@@ -98,6 +98,7 @@ const Weather = () => {
       const data = await response.json();
       console.log(data)
       setWeatherData(data);
+
     } catch (fetchError) {
       setError(fetchError.message);
     } finally {
@@ -111,20 +112,29 @@ const Weather = () => {
     fetchWeather(location); 
   }, [location]);
 
+
+  // Search function to handle user input and fetch the weather data for the searched location. It uses the Geocoding API to get the latitude and longitude of the searched city or district.
+
   const searchLocation = async (event) => {
     event.preventDefault();
 
-    if (!searchTerm.trim()) return;
+    if (!searchTerm.trim()) return;   // To check the empty input
 
     setLoading(true);
     setError("");
 
     try {
 
-      //Geocoding API call to search for the location based on user input. It fetches the latitude and longitude of the searched city or district.
+      //Geocoding API used to convert the Location like Mumbai into its latitude and longitude. 
       const response = await fetch(
         `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(searchTerm)}&count=1&language=en&format=json`
       );
+      //it will looks like this
+      //  {
+      //   name:"Mumbai",
+      //   latitude:19.07,
+      //   longitude:72.87
+      //   }
 
       if (!response.ok) {
         throw new Error("Location search failed.");
@@ -154,6 +164,8 @@ const Weather = () => {
 
   const current = weatherData?.current;
   const currentCondition = current ? weatherCodes[current.weather_code] || "Weather update" : "";
+  //API returns 61 and convert it into "Rain"
+
   const forecast = weatherData?.daily
     ? weatherData.daily.time.map((date, index) => {
         const rain = weatherData.daily.precipitation_sum[index] ?? 0;
@@ -253,6 +265,8 @@ const Weather = () => {
               5-Day Farming Advisory
             </h2>
             <div className="mt-5 grid gap-5 lg:grid-cols-5 md:grid-cols-2">
+
+              {/* create 5 cards for 5 days forecast and show the data in that card. */}
               {forecast.map((day) => (
                 <article key={day.date} className="rounded-lg bg-white p-5 shadow-md">
                   <p className="font-semibold text-green-700">
