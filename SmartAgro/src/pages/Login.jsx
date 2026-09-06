@@ -18,9 +18,8 @@ const Login = () => {
             disableRotation={false}
             pixelRatio={1}
           />
-        </div>
-
-      </section>
+         </div>
+      </section> 
 
     <section className="absolute flex flex-col  text-white w-full min-h-screen flex items-center justify-center px-4 py-30" aria-labelledby="login-heading">
       <form className="w-full max-w-md p-7 rounded-lg shadow-md loginForm" aria-describedby="login-help">

@@ -5,6 +5,7 @@ import About from "../components/About";
 import OurMission from "../components/OurMission";
 import WhatWeOffer from "../components/WhatWeOffer";
 import WhyChooseUs from "../components/WhyChooseUs";
+// import Test from "./Test";
 
 const Home = () => {
   return (
@@ -27,7 +28,7 @@ const Home = () => {
           <Hero />
         </div>
       </section>
-      
+      {/* <Test /> */}
       <Seasons />
       <About />
       <OurMission />

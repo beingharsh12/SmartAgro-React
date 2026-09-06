@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8">
           <section aria-labelledby="footer-brand-heading">
             <h3 id="footer-brand-heading" className="text-2xl font-bold text-green-300">
-              SmartAgro
+              SmartAgro     
             </h3>
             <p className="mt-4 text-gray-300">
               Empowering farmers with crop insights, seasonal guidance, and modern agricultural knowledge.
